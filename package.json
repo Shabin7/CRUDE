@@ -1,0 +1,21 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shabin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "crypto": "^1.0.1",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "mongeese": "^0.0.1",
+    "mongoose": "^8.7.1",
+    "mongoose-timestamp": "^0.6.0",
+    "shortid": "^2.2.16"
+  }
+}
