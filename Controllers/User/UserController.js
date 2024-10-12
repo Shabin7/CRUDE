@@ -3,7 +3,7 @@ var Responder = require('../../Helpers/Responder')
 var Utils = require("../../Helpers/Utils")
 
 function Controller() {
-    this.createUser = function (req, res) {
+    this.createUser = function (res, req) {
         var HashedPassword = Utils.createPassword(req.password)
         UserModel.create({
             user_id: "cust" + Utils.getShortId(),
@@ -13,6 +13,7 @@ function Controller() {
             },
             email: req.email,
             password: HashedPassword.password,
+            salt:HashedPassword.salt,
             phone_number: req.phone_number,
             address: req.address,
             dob: req.dob,
@@ -22,16 +23,16 @@ function Controller() {
             if (err)
                 return Responder.sendFailureMessage(res, "User creation failed");
 
-            Responder.sendSuccessData(res, "User created successfully", { user: doc })
+            Responder.sendSuccessData(res, "User has been created successfully", { user: doc })
         })
     }
 
-    this.getUserDetails = function (res, req) {
-        UserModel.findOne({ user_id: req.params.userId }, function (err, data) {
-            if (data != null)
-                return Responder.sendSuccessData(res, "User Details Available", { user: data })
-            return Responder.sendFailureMessage(res, "User Details Not Available")
-        })
-    }
+    // this.getUserDetails = function (res, req) {
+    //     UserModel.findOne({ user_id: req.params.userId }, function (err, data) {
+    //         if (data != null)
+    //             return Responder.sendSuccessData(res, "User Details Available", { user: data })
+    //         return Responder.sendFailureMessage(res, "User Details Not Available")
+    //     })
+    // }
 }
 module.exports = new Controller();

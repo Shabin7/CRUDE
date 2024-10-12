@@ -11,7 +11,8 @@ function Schema() {
         },
         email: String,
         password: String,
-        phone_number: String,
+        salt:String,
+        phone_number: Number,
         address: String,
         dob: Date,
         user_type: {
